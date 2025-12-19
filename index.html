@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>8x8 Round LED Matrix (Animated)</title>
+  <style>
+    :root {
+      --led-size: 24px;
+      --gap-size: 4px;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: black;
+    }
+
+    .matrix {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(8, var(--led-size));
+      grid-template-rows: repeat(8, var(--led-size));
+      gap: var(--gap-size);
+      background: #111;
+      padding: 12px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .led {
+      width: var(--led-size);
+      height: var(--led-size);
+      border-radius: 50%;
+      background: #111;
+      box-sizing: border-box;
+    }
+
+    /* ON LEDs */
+    .zero {
+      background: white;
+      box-shadow:
+        0 0 4px rgba(255,255,255,0.9),
+        0 0 8px rgba(255,255,255,0.6);
+      animation: flicker 2.8s infinite ease-in-out;
+    }
+
+    /* slight randomness using delays */
+    .zero:nth-child(odd) { animation-delay: 0.6s; }
+    .zero:nth-child(3n)  { animation-delay: 1.2s; }
+    .zero:nth-child(5n)  { animation-delay: 1.8s; }
+
+    @keyframes flicker {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.85;
+      }
+    }
+
+    /* OFF LEDs */
+    .one {
+      background: #111;
+      border: 1.5px solid white;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix">
+    <!-- 01010000 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led zero"></div><div class="led one"></div>
+    <div class="led zero"></div><div class="led zero"></div><div class="led zero"></div><div class="led zero"></div>
+
+    <!-- 01110010 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led one"></div>
+    <div class="led zero"></div><div class="led zero"></div><div class="led one"></div><div class="led zero"></div>
+
+    <!-- 01101111 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+    <div class="led one"></div><div class="led one"></div><div class="led one"></div><div class="led one"></div>
+
+    <!-- 01101110 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+    <div class="led one"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+
+    <!-- 01110100 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led one"></div>
+    <div class="led zero"></div><div class="led one"></div><div class="led zero"></div><div class="led zero"></div>
+
+    <!-- 01110110 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led one"></div>
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+
+    <!-- 01100001 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+    <div class="led zero"></div><div class="led zero"></div><div class="led zero"></div><div class="led one"></div>
+
+    <!-- 01101001 -->
+    <div class="led zero"></div><div class="led one"></div><div class="led one"></div><div class="led zero"></div>
+    <div class="led one"></div><div class="led zero"></div><div class="led zero"></div><div class="led one"></div>
+  </div>
+</body>
+</html>
